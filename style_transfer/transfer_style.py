@@ -1,8 +1,8 @@
 import torch
 import os
 from torch.autograd import Variable
-from upgrade_style_transfer.model import Net
-from upgrade_style_transfer.utils import tensor_load_rgbimage, preprocess_batch, tensor_save_bgrimage
+from style_transfer.model import Net
+from style_transfer.utils import tensor_load_rgbimage, preprocess_batch, tensor_save_bgrimage
 
 
 def transfer_style(original_path: str, style_path: str, style_model: Net, save_dir: str = 'generated_images') -> str:

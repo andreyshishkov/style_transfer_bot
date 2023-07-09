@@ -6,8 +6,8 @@ from aiogram.utils import executor
 from settings.config import TOKEN
 from settings.messages import START_MESSAGE
 from data_base.dbalchemy import DBManager
-from upgrade_style_transfer.transfer_style import transfer_style as transfer
-from upgrade_style_transfer.model import Net
+from style_transfer.transfer_style import transfer_style as transfer
+from style_transfer.model import Net
 
 
 bot = Bot(token=TOKEN)
@@ -17,7 +17,7 @@ data_base = DBManager()
 
 
 model = Net(ngf=128)
-model_dict = torch.load('upgrade_style_transfer/21styles.model')
+model_dict = torch.load('style_transfer/styles.model')
 model_dict_clone = model_dict.copy()
 for key, value in model_dict_clone.items():
     if key.endswith(('running_mean', 'running_var')):

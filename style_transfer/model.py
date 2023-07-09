@@ -1,5 +1,5 @@
 import torch.nn as nn
-from upgrade_style_transfer.layers import GramMatrix, Bottleneck, UpBottleneck, ConvLayer, Inspiration
+from style_transfer.layers import GramMatrix, Bottleneck, UpBottleneck, ConvLayer, Inspiration
 
 
 class Net(nn.Module):
