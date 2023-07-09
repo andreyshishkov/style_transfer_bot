@@ -6,9 +6,6 @@ from aiogram.utils import executor
 from settings.config import TOKEN
 from settings.messages import START_MESSAGE
 from data_base.dbalchemy import DBManager
-#from style_transfer.make_transfer import transfer_style as transfer
-from style_transfer.model import VGG
-
 from upgrade_style_transfer.transfer_style import transfer_style as transfer
 from upgrade_style_transfer.model import Net
 
@@ -18,8 +15,7 @@ dp = Dispatcher(bot)
 
 data_base = DBManager()
 
-#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-#model = VGG().to(device).eval()
+
 model = Net(ngf=128)
 model_dict = torch.load('upgrade_style_transfer/21styles.model')
 model_dict_clone = model_dict.copy()
