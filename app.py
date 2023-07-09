@@ -75,7 +75,10 @@ async def handle_photo(message: types.Message):
         await message.photo[-1].download(new_style_path)
 
         if curr_style_path != 'styles/default.jpg':
-            os.remove(curr_style_path)
+            try:
+                os.remove(curr_style_path)
+            except:
+                pass
 
         data_base.change_path(chat_id, new_style_path)
 
