@@ -3,3 +3,5 @@
 venv
 .idea
 vgg_dict
+styles
+!default.jpg
