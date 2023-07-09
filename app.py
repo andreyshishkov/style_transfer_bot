@@ -28,22 +28,25 @@ model.load_state_dict(model_dict, False)
 @dp.message_handler(commands=['start'])
 async def start_command(message: types.Message):
     if message.chat.id not in data_base.get_all_chat_ids():
-        data_base.insert_chat_id(message.chat.id)
-    await message.reply(START_MESSAGE)
+        try:
+            data_base.insert_chat_id(message.chat.id)
+        except Exception as ex:
+            print('Non-standard entry')
+    await message.answer(START_MESSAGE)
 
 
 @dp.message_handler(commands=['change_style'])
 async def change_style(message: types.Message):
     chat_id = message.chat.id
     data_base.change_mode(chat_id, False)
-    await message.reply('Включен режим "Ввод стиля". Отправьте изображение стиля')
+    await message.answer('Включен режим "Ввод стиля". Отправьте изображение стиля')
 
 
 @dp.message_handler(commands=['transfer_style'])
 async def transfer_style(message: types.Message):
     chat_id = message.chat.id
     data_base.change_mode(chat_id, True)
-    await message.reply('Включен режим "Перенос стиля". Отправьте изображение, на которое хотите перенести стиль')
+    await message.answer('Включен режим "Перенос стиля". Отправьте изображение, на которое хотите перенести стиль')
 
 
 @dp.message_handler(content_types=['photo'])
